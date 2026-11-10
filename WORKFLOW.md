@@ -133,3 +133,47 @@ README.md도 만드는데 그 안에 이 프로젝트를 어떻게 실행하고 
 ### 결과 요약
 
 현재 앱 구조에 맞춰 `index.html`을 `~/work/tetris`로 복사하는 WSL 명령, SSH 키 등록 및 확인, `knowmetoowell/tetris` 저장소 생성, SSH 원격 연결, GitHub Pages 설정과 업데이트 절차를 `GITHUB_PAGES.md`에 정리했습니다. 문서 파일을 확인했으며 테스트는 실행하지 않았습니다. 변경 파일은 `GITHUB_PAGES.md`, `WORKFLOW.md`입니다.
+
+## 2026-11-10 — Jest 프론트엔드 테스트 안내 작성
+
+### 프롬프트 (원문)
+
+````text
+프론트엔드의 유닛테스트를 추가하고 싶은데 jest를 쓰고 싶어. 현재 이 시스템에 node가 있지만 없는 사람을 위해서 node 설치부터 어떻게 사용할 수 있는지 정리해서 JEST.md로 저장해줘
+````
+
+### 결과 요약
+
+Node.js가 설치된 Windows PowerShell과 Node가 없는 WSL Ubuntu 환경을 확인했습니다. 두 환경의 Node.js 설치 절차, Jest와 jsdom 설정, 현재 인라인 게임 로직을 분리해 테스트하는 회전 함수 예제, 테스트 실행 명령을 `JEST.md`에 정리했습니다. 문서 내용을 확인했으며 Jest 테스트는 실행하지 않았습니다. 변경 파일은 `JEST.md`, `WORKFLOW.md`입니다.
+
+## 2026-11-10 — Jest 설정을 현재 프로젝트에 적용
+
+### 프롬프트 (원문)
+
+````text
+JEST.md 에서 npm pkg set scripts.test="jest" 까지 설정을 했는데 그 다음부터 너가 알아서 JEST 환경 구축해줘
+````
+
+### 후속 프롬프트 (원문)
+
+````text
+모르고 ~/work/tetris 경로에 node 초기화를 했는데, 이 프로젝트 경로에다 JEST.md 참고하여 다시 적용해줘.
+````
+
+### 결과 요약
+
+현재 프로젝트 루트에서 Jest와 jsdom을 설치하고 `test` 스크립트, `jest.config.cjs`, `.gitignore`를 설정했습니다. `rotateMatrix`를 `src/game-logic.js`로 분리해 브라우저와 Jest에서 함께 사용하도록 연결하고 회전 및 입력 불변성 테스트 3개를 추가했습니다. WSL의 nvm Node.js를 로드해 `npm test -- --runInBand`를 실행했으며 3개 테스트가 통과했습니다. `JEST.md`의 WSL 환경 설명도 확인된 nvm 상태에 맞게 갱신했습니다. 변경 파일은 `.gitignore`, `index.html`, `JEST.md`, `jest.config.cjs`, `package.json`, `package-lock.json`, `src/game-logic.js`, `tests/game-logic.test.js`, `WORKFLOW.md`입니다.
+
+## 2026-11-10 — 테스트 및 Git 병합 지침 추가
+
+### 프롬프트 (원문)
+
+````text
+앞으로 모든 수정은 유닛테스트를 진행하고 통과하지 못하면 반영하지 않는다는 내용을 AGENTS.md 에 저장해줘.
+
+git rebase는 금지하며 merge를 활용한다. 이 내용도 AGENTS.md에 저장해줘
+````
+
+### 결과 요약
+
+`AGENTS.md`에 모든 수정에 대한 유닛 테스트 통과 기준과 실패 시 반영하지 않는 규칙, `git rebase` 금지 및 `git merge` 사용 지침을 추가했습니다. `npm test`를 실행해 1개 스위트의 테스트 3개가 통과했고 `git diff --check`도 통과했습니다. 변경 파일은 `AGENTS.md`, `WORKFLOW.md`입니다.
