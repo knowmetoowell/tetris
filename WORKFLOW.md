@@ -177,3 +177,15 @@ git rebase는 금지하며 merge를 활용한다. 이 내용도 AGENTS.md에 저
 ### 결과 요약
 
 `AGENTS.md`에 모든 수정에 대한 유닛 테스트 통과 기준과 실패 시 반영하지 않는 규칙, `git rebase` 금지 및 `git merge` 사용 지침을 추가했습니다. `npm test`를 실행해 1개 스위트의 테스트 3개가 통과했고 `git diff --check`도 통과했습니다. 변경 파일은 `AGENTS.md`, `WORKFLOW.md`입니다.
+
+## 2026-11-10 — 프로젝트 변경사항을 두 저장소에 동기화하고 푸시
+
+### 프롬프트 (원문)
+
+````text
+이 프로젝트에서 변경된 내용을 ~work/tetris 로 옮겨주고, 이 프로젝트와 ~work/tetris 에서 commit & push 진행해줘.
+````
+
+### 결과 요약
+
+현재 프로젝트의 변경 파일을 `~/work/tetris`에 반영하고 두 저장소의 `main`에 각각 커밋해 푸시했습니다. 원 프로젝트 저장소는 `origin/main`의 8개 커밋을 `git merge`로 fast-forward한 뒤 작업했습니다. 양쪽에서 `npm test -- --runInBand`를 실행해 3개 테스트가 모두 통과했습니다. 주요 변경 파일은 `AGENTS.md`, `WORKFLOW.md`, `index.html`, `JEST.md`, `jest.config.cjs`, `package.json`, `package-lock.json`, `src/game-logic.js`, `tests/game-logic.test.js`이며, 원 프로젝트에는 `GITHUB_PAGES.md`와 `.gitignore`도 포함됩니다. 커밋은 원 프로젝트 `fc088c7`, `knowmetoowell/tetris` `82cb993`입니다.
